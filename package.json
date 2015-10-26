@@ -1,0 +1,30 @@
+{
+  "name": "coffee-tmpl",
+  "version": "1.0.0",
+  "description": "javascript template engine. only browser.",
+  "main": "lib/tmpl.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel lib/tmpl.js --out-file build/tmpl.js --source-maps --modules umd --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffeedeveloper/coffee-tmpl.git"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "CoffeeDeveloper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coffeedeveloper/coffee-tmpl/issues"
+  },
+  "homepage": "https://github.com/coffeedeveloper/coffee-tmpl#readme",
+  "devDependencies": {
+    "babel": "^5.8.29",
+    "gulp": "^3.9.0"
+  }
+}
