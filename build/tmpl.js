@@ -25,9 +25,17 @@
     return String(s).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/&#39;/g, '\'').replace(/&quot;/g, '"').replace(/<br>/g, '\n');
   };
 
+  var opts = {
+    delimiter: '#'
+  };
+
+  var set = exports.set = function set(key, val) {
+    opts[key] = val;
+  };
+
   var compile = exports.compile = function compile() {
     var tpl = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-    var reg = /\<\#([\s\S]+?)\#\>/g;
+    var reg = new RegExp('\\<' + opts.delimiter + '([\\s\\S]+?)' + opts.delimiter + '\\>', 'g');
     var cursor = 0;
     var code = '';
     var match = undefined;

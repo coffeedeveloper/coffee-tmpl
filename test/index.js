@@ -54,6 +54,13 @@ describe('parse', function() {
   });
 });
 
+describe('delimiter', function() {
+  it('change delimiter', function() {
+    tmpl.set('delimiter', '%');
+    tmpl.parse('<h1><%= title %></h1>', {title: 'haha'}).should.be.equal('<h1>haha</h1>');
+  });
+});
+
 describe('encode', function() {
   maps.map(function(d) {
     it('encode ' + d.from + ' to ' + d.to, function() {
