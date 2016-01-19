@@ -26,7 +26,7 @@
   };
 
   var opts = {
-    delimiter: '#'
+    delimiter: '%'
   };
 
   var set = exports.set = function set(key, val) {
@@ -35,7 +35,7 @@
 
   var compile = exports.compile = function compile() {
     var tpl = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
-    var reg = new RegExp('\\<' + opts.delimiter + '([\\s\\S]+?)' + opts.delimiter + '\\>', 'g');
+    var reg = new RegExp('\\<\\' + opts.delimiter + '([\\s\\S]+?)\\' + opts.delimiter + '\\>', 'g');
     var cursor = 0;
     var code = '';
     var match = undefined;
