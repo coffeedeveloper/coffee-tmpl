@@ -1,6 +1,6 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports'], factory);
+    define('Tmpl', ['exports'], factory);
   } else if (typeof exports !== "undefined") {
     factory(exports);
   } else {
@@ -8,7 +8,7 @@
       exports: {}
     };
     factory(mod.exports);
-    global.tmpl = mod.exports;
+    global.Tmpl = mod.exports;
   }
 })(this, function (exports) {
   'use strict';
@@ -35,6 +35,7 @@
 
   var compile = exports.compile = function compile() {
     var tpl = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+
     var reg = new RegExp('\\<\\' + opts.delimiter + '([\\s\\S]+?)\\' + opts.delimiter + '\\>', 'g');
     var cursor = 0;
     var code = '';
@@ -50,11 +51,9 @@
           case '=':
             code += '\n            __r__.push(encode(' + line.substr(1) + '));\n          ';
             break;
-
           case '-':
             code += '\n            __r__.push(' + line.substr(1) + ');\n          ';
             break;
-
           default:
             code += line;
             break;
@@ -73,6 +72,7 @@
 
     push(tpl.substr(cursor, tpl.length - cursor));
     code = ('with(obj) {\n            var __r__ = [];\n            ' + code + '\n            return __r__.join("");\n          }').replace(/[\r\t\n]/g, '');
+
     return function (data) {
       return new Function('obj, encode', code).apply(data, [data, encode]);
     };

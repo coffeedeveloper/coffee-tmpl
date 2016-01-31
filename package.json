@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha test/index.js",
     "doc": "jsdoc lib/tmpl.js",
-    "dev": "babel lib/tmpl.js --out-file build/tmpl.js --modules umd --watch --presets es2015,stage-1",
+    "dev": "babel lib/tmpl.js --out-file build/tmpl.js",
     "build": "babel lib/tmpl.js --out-file build/tmpl.js --modules --presets es2015,stage-1",
     "prebuild": "babel lib/tmpl.js --out-file build/tmpl.js --modules --presets es2015,stage-1"
   },
@@ -34,6 +34,7 @@
     "babel-preset-stage-1": "^6.3.13",
     "gulp": "^3.9.0",
     "gulp-dev": "^0.3.0",
+    "gulp-uglifyjs": "^0.6.2",
     "mocha": "^2.3.4",
     "should": "^8.1.1"
   }
