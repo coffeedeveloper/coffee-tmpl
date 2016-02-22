@@ -1,6 +1,6 @@
 {
   "name": "coffee-tmpl",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "javascript template engine. only browser.",
   "main": "lib/tmpl.js",
   "directories": {
@@ -9,9 +9,8 @@
   "scripts": {
     "test": "mocha test/index.js",
     "doc": "jsdoc lib/tmpl.js",
-    "dev": "babel lib/tmpl.js --out-file build/tmpl.js",
-    "build": "babel lib/tmpl.js --out-file build/tmpl.js --modules --presets es2015,stage-1",
-    "prebuild": "babel lib/tmpl.js --out-file build/tmpl.js --modules --presets es2015,stage-1"
+    "dev": "babel lib/tmpl.js --out-file build/tmpl.js --watch",
+    "build": "babel lib/tmpl.js --out-file build/tmpl.js"
   },
   "repository": {
     "type": "git",

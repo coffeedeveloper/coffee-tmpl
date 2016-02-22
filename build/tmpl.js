@@ -73,7 +73,8 @@
     push(tpl.substr(cursor, tpl.length - cursor));
     code = ('with(obj) {\n            var __r__ = [];\n            ' + code + '\n            return __r__.join("");\n          }').replace(/[\r\t\n]/g, '');
 
-    return function (data) {
+    return function () {
+      var data = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
       return new Function('obj, encode', code).apply(data, [data, encode]);
     };
   };
