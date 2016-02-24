@@ -3,6 +3,7 @@ var should = require('should');
 var tmpl = require('../build/tmpl');
 
 var t1 = '<h1><%= title %></h1>';
+var t2 = '<h1><%- title %></h1>';
 var maps = [
   { from: '<', to: '&lt;' },
   { from: '>', to: '&gt;' },
@@ -44,7 +45,7 @@ describe('parse', function() {
   });
 
   it('<%- %> don\'t escape html tag', function() {
-    tmpl.parse(t1, {title: '<script>haha</script>'}).should.not
+    tmpl.parse(t2, {title: '<script>haha</script>'}).should.be
       .equal('<h1><script>haha</script></h1>');
   });
 
