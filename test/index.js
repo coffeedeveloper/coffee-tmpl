@@ -1,6 +1,6 @@
+require('blanket');
 var should = require('should');
 var tmpl = require('../build/tmpl');
-console.log(tmpl);
 
 var t1 = '<h1><%= title %></h1>';
 var maps = [
