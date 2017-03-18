@@ -6,6 +6,12 @@
 - `<%= a %>` 输出变量内容（HTML编码）
 - `<%- a %>` 原样输出，不编码
 
+### 安装
+
+```
+npm install coffee-tmpl
+```
+
 ### 接口说明
 
 #### compile(tpl)
