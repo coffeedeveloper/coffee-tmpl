@@ -1,17 +1,18 @@
 {
   "name": "coffee-tmpl",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "javascript template engine. only browser.",
   "main": "lib/tmpl.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/index.js",
-    "report": "mocha test/index.js -r blanket -R html-cov > coverage.html",
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "release": "rollup -c && uglifyjs -o build/tmpl.min.js lib/tmpl.js && cp lib/tmpl.js build/tmpl.js",
     "doc": "jsdoc lib/tmpl.js",
-    "dev": "babel lib/tmpl.js --out-file build/tmpl.js --watch",
-    "build": "babel lib/tmpl.js --out-file build/tmpl.js"
+    "report": "mocha test/index.js -r blanket -R html-cov > coverage.html",
+    "test": "mocha test/index.js"
   },
   "config": {
     "blanket": {
@@ -33,15 +34,12 @@
   },
   "homepage": "https://github.com/coffeedeveloper/coffee-tmpl#readme",
   "devDependencies": {
-    "babel-cli": "^6.4.0",
-    "babel-plugin-syntax-export-extensions": "^6.3.13",
-    "babel-plugin-transform-es2015-modules-umd": "^6.4.3",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-1": "^6.3.13",
-    "blanket": "^1.2.2",
-    "gulp": "^3.9.0",
-    "gulp-dev": "^0.3.0",
-    "gulp-uglifyjs": "^0.6.2",
+    "rollup": "^0.41.4",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-watch": "^3.2.2",
+    "uglify-js": "^2.6.2",
     "jsdoc": "^3.4.0",
     "mocha": "^2.3.4",
     "should": "^8.1.1"
