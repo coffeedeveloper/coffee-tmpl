@@ -1,18 +1,20 @@
 /** @module coffee-tmpl */
 
+const tmpl = {};
+
 /**
  * 将字符转换成HTML特殊字符
  * @function
  * @param {string} s - 需要做html encode的字符串
  * @return {string} html encode之后的字符串
  */
-export const encode = s => String(s).replace(/&/g, '&amp;')
-                                    .replace(/</g, '&lt;')
-                                    .replace(/>/g, '&gt;')
-                                    .replace(/ /g, '&nbsp;')
-                                    .replace(/\'/g, '&#39;')
-                                    .replace(/\"/g, '&quot;')
-                                    .replace(/\n/g, '<br>');
+tmpl.encode = s => String(s).replace(/&/g, '&amp;')
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;')
+                            .replace(/ /g, '&nbsp;')
+                            .replace(/\'/g, '&#39;')
+                            .replace(/\"/g, '&quot;')
+                            .replace(/\n/g, '<br>');
 
 /**
  * 将HTML特殊字符转回成原字符
@@ -20,13 +22,13 @@ export const encode = s => String(s).replace(/&/g, '&amp;')
  * @param {string} s - 需要做html decode的字符串
  * @return {string} html decode之后的字符串
  */
-export const decode = s => String(s).replace(/&amp;/g, '&')
-                                    .replace(/&lt;/g, '<')
-                                    .replace(/&gt;/g, '>')
-                                    .replace(/&nbsp;/g, ' ')
-                                    .replace(/&#39;/g, '\'')
-                                    .replace(/&quot;/g, '"')
-                                    .replace(/<br>/g, '\n');
+tmpl.decode = s => String(s).replace(/&amp;/g, '&')
+                            .replace(/&lt;/g, '<')
+                            .replace(/&gt;/g, '>')
+                            .replace(/&nbsp;/g, ' ')
+                            .replace(/&#39;/g, '\'')
+                            .replace(/&quot;/g, '"')
+                            .replace(/<br>/g, '\n');
 
 let opts = {
   delimiter: '%',
@@ -38,7 +40,7 @@ let opts = {
  * @param {string} key - 设置项
  * @param {any} val - 设置内容
  */
-export const set = (key, val) => {
+tmpl.set = (key, val) => {
   opts[key] = val;
 };
 
@@ -48,7 +50,7 @@ export const set = (key, val) => {
  * @param {string} tpl - 模板字符串
  * @return {function} 编译后的可执行渲染的函数，主要用于缓存执行，提高效率
  */
-export const compile = (tpl = '') => {
+tmpl.compile = (tpl = '') => {
   let reg = new RegExp(`\\<\\${opts.delimiter}([\\s\\S]+?)\\${opts.delimiter}\\>`, 'g');
   let cursor = 0;
   let code = '';
@@ -106,4 +108,6 @@ export const compile = (tpl = '') => {
  * @param {object} data - 模板的数据源
  * @return {string} 编译后的模板字符串
  */
-export const parse = (tpl = '', data = {}) => compile(tpl)(data);
+tmpl.parse = (tpl = '', data = {}) => compile(tpl)(data);
+
+export default tmpl;
