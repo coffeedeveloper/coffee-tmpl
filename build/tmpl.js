@@ -114,7 +114,7 @@ tmpl.parse = function (tpl, data) {
   if ( tpl === void 0 ) tpl = '';
   if ( data === void 0 ) data = {};
 
-  return compile(tpl)(data);
+  return tmpl.compile(tpl)(data);
 };
 
 return tmpl;

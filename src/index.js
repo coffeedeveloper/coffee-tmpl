@@ -108,6 +108,6 @@ tmpl.compile = (tpl = '') => {
  * @param {object} data - 模板的数据源
  * @return {string} 编译后的模板字符串
  */
-tmpl.parse = (tpl = '', data = {}) => compile(tpl)(data);
+tmpl.parse = (tpl = '', data = {}) => tmpl.compile(tpl)(data);
 
 export default tmpl;
