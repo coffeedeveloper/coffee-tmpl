@@ -99,7 +99,7 @@ tmpl.compile = function (tpl) {
   return function (data) {
     if ( data === void 0 ) data = {};
 
-    return new Function('obj, encode', code).apply(data, [data, encode]);
+    return new Function('obj, encode', code).apply(data, [data, tmpl.encode]);
   };
 };
 

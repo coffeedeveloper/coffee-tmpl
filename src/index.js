@@ -98,7 +98,7 @@ tmpl.compile = (tpl = '') => {
             return __r__.join("");
           }`).replace(/[\r\t\n]/g, '');
 
-  return (data = {}) => new Function('obj, encode', code).apply(data, [data, encode]);
+  return (data = {}) => new Function('obj, encode', code).apply(data, [data, tmpl.encode]);
 };
 
 /**

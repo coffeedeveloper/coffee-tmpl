@@ -1,6 +1,6 @@
 {
   "name": "coffee-tmpl",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "javascript template engine. only browser.",
   "main": "lib/tmpl.js",
   "directories": {
